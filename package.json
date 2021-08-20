@@ -1,0 +1,23 @@
+{
+  "name": "webpack-config",
+  "version": "1.0.0",
+  "description": "webpack.config",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShaunZh/webpack-config.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShaunZh/webpack-config/issues"
+  },
+  "homepage": "https://github.com/ShaunZh/webpack-config#readme",
+  "devDependencies": {
+    "webpack": "^5.51.1",
+    "webpack-cli": "^4.8.0"
+  }
+}
