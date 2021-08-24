@@ -3,7 +3,7 @@
  * @Author: Hexon
  * @Date: 2021-08-23 18:44:17
  * @LastEditors: Hexon
- * @LastEditTime: 2021-08-23 20:05:52
+ * @LastEditTime: 2021-08-24 10:25:35
  */
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const dev = process.env.NODE_ENV === "development";
@@ -11,6 +11,10 @@ const config = require("./public/config")[dev ? "dev" : "build"];
 
 module.exports = {
   mode: dev ? "development" : "production",
+  devServer: {
+    port: "3000", //默认是8080
+  },
+  devtool: "cheap-module-source-map",
   module: {
     rules: [
       {
