@@ -3,7 +3,7 @@
  * @Author: Hexon
  * @Date: 2021-08-25 16:42:16
  * @LastEditors: Hexon
- * @LastEditTime: 2021-08-26 18:25:51
+ * @LastEditTime: 2021-08-26 19:38:52
  */
 const baseConfig = require("./webpack.base");
 const { merge } = require("webpack-merge");
@@ -15,6 +15,7 @@ const config = {
     new MiniCssExtractPlugin({
       filename: "css/[name].css", // 将css放到打包后的单独目录下
     }),
+    new CleanWebpackPlugin(),
   ],
   optimization: {
     minimizer: [
