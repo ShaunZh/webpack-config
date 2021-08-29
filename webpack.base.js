@@ -3,13 +3,13 @@
  * @Author: Hexon
  * @Date: 2021-08-23 18:44:17
  * @LastEditors: Hexon
- * @LastEditTime: 2021-08-26 19:38:45
+ * @LastEditTime: 2021-08-27 15:05:20
  */
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const svgToMiniDataURI = require("mini-svg-data-uri");
 const { VueLoaderPlugin } = require("vue-loader");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const Webpack = require("webpack");
 
 const dev = process.env.NODE_ENV === "development";
 const path = require("path");
@@ -20,9 +20,15 @@ module.exports = {
   entry: "./src/main.js",
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "js/[name].js",
-    chunkFilename: "js/[name].js",
+    filename: "js/[name].[contenthash:8].js",
+    chunkFilename: "js/[name].[contenthash:8].js",
     publicPath: "",
+  },
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "src"),
+    },
+    extensions: [".js", ".jsx", ".vue", ".json", ".css"],
   },
   module: {
     noParse: /jquery|lodash/,
@@ -139,5 +145,6 @@ module.exports = {
       // hash: true,
     }),
     new VueLoaderPlugin(),
+    new Webpack.DefinePlugin({}),
   ],
 };

@@ -5,9 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development ENV_TYPE=daily webpack-dev-server",
-    "dev:dailyDev": "cross-env NODE_ENV=development ENV_TYPE=dailyDev webpack-dev-server",
-    "dev:sim": "cross-env NODE_ENV=development ENV_TYPE=sim webpack-dev-server",
-    "build": "cross-env NODE_ENV=production webpack"
+    "build": "cross-env NODE_ENV=production ENV_TYPE=daily webpack",
+    "build:prod": "cross-env NODE_ENV=production ENV_TYPE=prod webpack"
   },
   "repository": {
     "type": "git",
@@ -47,6 +46,7 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
-    "vue": "^3.2.6"
+    "vue": "^3.2.6",
+    "vue-router": "^4.0.11"
   }
 }

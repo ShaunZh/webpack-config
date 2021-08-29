@@ -3,10 +3,11 @@
  * @Author: Hexon
  * @Date: 2021-08-25 16:42:16
  * @LastEditors: Hexon
- * @LastEditTime: 2021-08-26 19:38:52
+ * @LastEditTime: 2021-08-27 11:11:18
  */
 const baseConfig = require("./webpack.base");
 const { merge } = require("webpack-merge");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
