@@ -1,12 +1,11 @@
-import React, { useState } from "react";
-import "./style";
-import { HashRouter as Router, Link, Switch, Route } from 'react-router-dom'
-import Counter from '@/pages/Counter'
-import Home from '@/pages/Home'
+import React from 'react';
+import './style';
+import { HashRouter as Router, Link, Switch, Route } from 'react-router-dom';
+import Counter from '@/pages/Counter';
+import Home from '@/pages/Home';
 
 
-export default function App() {
-  const [title, setTitle] = useState('react')
+export default function App(): React.ReactElement {
 
   return (
     <>
@@ -17,7 +16,7 @@ export default function App() {
         </ul>
         <Switch>
           <Route path="/" exact><Home></Home></Route>
-          <Route path="/counter"><Counter initCount={0} title={title}></Counter></Route>
+          <Route path="/counter"><Counter initCount={0}></Counter></Route>
         </Switch>
       </Router>
     </>

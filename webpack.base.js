@@ -3,31 +3,31 @@
  * @Author: Hexon
  * @Date: 2021-08-23 18:44:17
  * @LastEditors: Hexon
- * @LastEditTime: 2021-08-29 19:07:47
+ * @LastEditTime: 2021-08-30 17:01:32
  */
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const svgToMiniDataURI = require("mini-svg-data-uri");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const Webpack = require("webpack");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const svgToMiniDataURI = require('mini-svg-data-uri');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const Webpack = require('webpack');
 
-const dev = process.env.NODE_ENV === "development";
-const path = require("path");
+const dev = process.env.NODE_ENV === 'development';
+const path = require('path');
 
 module.exports = {
-  mode: dev ? "development" : "production",
-  devtool: dev ? "cheap-module-source-map" : "nosources-source-map",
-  entry: "./src/main.tsx",
+  mode: dev ? 'development' : 'production',
+  devtool: dev ? 'cheap-module-source-map' : 'nosources-source-map',
+  entry: './src/main.tsx',
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "js/[name].[contenthash:8].js",
-    chunkFilename: "js/[name].[contenthash:8].js",
-    publicPath: "",
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'js/[name].[contenthash:8].js',
+    chunkFilename: 'js/[name].[contenthash:8].js',
+    publicPath: '',
   },
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      '@': path.resolve(__dirname, './src'),
     },
-    extensions: [".ts", ".tsx", ".js", ".jsx", ".css", ".less", ".json"],
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.css', '.less', '.json'],
   },
   module: {
     noParse: /jquery|lodash/,
@@ -36,7 +36,7 @@ module.exports = {
         test: /\.(js|ts)x?$/,
         use: [
           {
-            loader: "babel-loader",
+            loader: 'babel-loader',
             options: {
               cacheDirectory: true,
             },
@@ -46,25 +46,23 @@ module.exports = {
       },
       {
         test: /\.tsx?$/,
-        use: ["ts-loader"],
+        use: ['ts-loader'],
         exclude: /node_modules/,
       },
       {
         test: /\.(le|c)ss$/,
         use: [
-          process.env.NODE_ENV !== "production"
-            ? "style-loader"
-            : MiniCssExtractPlugin.loader,
-          "css-loader",
+          process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
           {
-            loader: "postcss-loader",
+            loader: 'postcss-loader',
             options: {
               postcssOptions: {
-                plugins: [["autoprefixer"]],
+                plugins: [['autoprefixer']],
               },
             },
           },
-          "less-loader",
+          'less-loader',
         ],
         exclude: /node_modules/,
       },
@@ -72,13 +70,13 @@ module.exports = {
         test: /\.(png|jpe?g|gif|webp)(\?.*)?$/,
         use: [
           {
-            loader: "url-loader",
+            loader: 'url-loader',
             options: {
               limit: 10240,
               fallback: {
-                loader: "file-loader",
+                loader: 'file-loader',
                 options: {
-                  name: "img/[name].[contenthash:8].[ext]",
+                  name: 'img/[name].[contenthash:8].[ext]',
                 },
               },
             },
@@ -90,10 +88,10 @@ module.exports = {
         test: /\.(svg)(\?.*)?$/,
         use: [
           {
-            loader: "url-loader",
+            loader: 'url-loader',
             options: {
               generator: (content) => svgToMiniDataURI(content.toString()),
-              name: "img/[name].[contenthash:8].[ext]",
+              name: 'img/[name].[contenthash:8].[ext]',
             },
           },
         ],
@@ -102,13 +100,13 @@ module.exports = {
         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
         use: [
           {
-            loader: "url-loader",
+            loader: 'url-loader',
             options: {
               limit: 10240,
               fallback: {
-                loader: "file-loader",
+                loader: 'file-loader',
                 options: {
-                  name: "media/[name].[contenthash:8].[ext]",
+                  name: 'media/[name].[contenthash:8].[ext]',
                 },
               },
             },
@@ -119,13 +117,13 @@ module.exports = {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/i,
         use: [
           {
-            loader: "url-loader",
+            loader: 'url-loader',
             options: {
               limit: 10240,
               fallback: {
-                loader: "file-loader",
+                loader: 'file-loader',
                 options: {
-                  name: "fonts/[name].[contenthash:8].[ext]",
+                  name: 'fonts/[name].[contenthash:8].[ext]',
                 },
               },
             },
@@ -136,8 +134,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./public/index.html",
-      filename: "index.html",
+      template: './public/index.html',
+      filename: 'index.html',
       // minify: {
       //   removeAttributeQuotes: false, //是否删除属性的双引号
       //   collapseWhitespace: false, //是否折叠空白
