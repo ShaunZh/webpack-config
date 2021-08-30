@@ -3,11 +3,10 @@
  * @Author: Hexon
  * @Date: 2021-08-23 18:44:17
  * @LastEditors: Hexon
- * @LastEditTime: 2021-08-27 15:05:20
+ * @LastEditTime: 2021-08-29 19:07:47
  */
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const svgToMiniDataURI = require("mini-svg-data-uri");
-const { VueLoaderPlugin } = require("vue-loader");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const Webpack = require("webpack");
 
@@ -17,7 +16,7 @@ const path = require("path");
 module.exports = {
   mode: dev ? "development" : "production",
   devtool: dev ? "cheap-module-source-map" : "nosources-source-map",
-  entry: "./src/main.js",
+  entry: "./src/main.tsx",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "js/[name].[contenthash:8].js",
@@ -26,15 +25,15 @@ module.exports = {
   },
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "src"),
+      "@": path.resolve(__dirname, "./src"),
     },
-    extensions: [".js", ".jsx", ".vue", ".json", ".css"],
+    extensions: [".ts", ".tsx", ".js", ".jsx", ".css", ".less", ".json"],
   },
   module: {
     noParse: /jquery|lodash/,
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.(js|ts)x?$/,
         use: [
           {
             loader: "babel-loader",
@@ -43,6 +42,11 @@ module.exports = {
             },
           },
         ],
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.tsx?$/,
+        use: ["ts-loader"],
         exclude: /node_modules/,
       },
       {
@@ -128,10 +132,6 @@ module.exports = {
           },
         ],
       },
-      {
-        test: /\.vue$/,
-        loader: "vue-loader",
-      },
     ],
   },
   plugins: [
@@ -144,7 +144,6 @@ module.exports = {
       // },
       // hash: true,
     }),
-    new VueLoaderPlugin(),
     new Webpack.DefinePlugin({}),
   ],
 };
