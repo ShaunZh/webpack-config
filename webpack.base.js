@@ -3,7 +3,7 @@
  * @Author: Hexon
  * @Date: 2021-08-23 18:44:17
  * @LastEditors: Hexon
- * @LastEditTime: 2021-08-30 17:01:32
+ * @LastEditTime: 2021-08-31 10:35:41
  */
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const svgToMiniDataURI = require('mini-svg-data-uri');
@@ -142,6 +142,7 @@ module.exports = {
       // },
       // hash: true,
     }),
-    new Webpack.DefinePlugin({}),
+
+    new Webpack.ProgressPlugin(),
   ],
 };
