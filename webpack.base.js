@@ -3,7 +3,7 @@
  * @Author: Hexon
  * @Date: 2021-08-23 18:44:17
  * @LastEditors: Hexon
- * @LastEditTime: 2021-08-31 10:35:41
+ * @LastEditTime: 2021-08-31 18:16:11
  */
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const svgToMiniDataURI = require('mini-svg-data-uri');
@@ -22,6 +22,12 @@ module.exports = {
     filename: 'js/[name].[contenthash:8].js',
     chunkFilename: 'js/[name].[contenthash:8].js',
     publicPath: '',
+    // 使用webpack5来清除目录，保持dll目录不清除，
+    // 之所以没有使用CleanWebpackPlugin，是因为配置cleanOnceBeforeBuildPatterns保留dll目录时不成功，
+    // 仍然会删除dll目录，暂未找到原因
+    clean: {
+      keep: /dll/,
+    },
   },
   resolve: {
     alias: {
