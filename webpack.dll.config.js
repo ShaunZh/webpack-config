@@ -3,7 +3,7 @@
  * @Author: Hexon
  * @Date: 2021-08-27 18:33:17
  * @LastEditors: Hexon
- * @LastEditTime: 2021-08-31 13:42:34
+ * @LastEditTime: 2021-08-31 18:23:26
  */
 const Webpack = require('webpack');
 const path = require('path');
@@ -21,7 +21,8 @@ module.exports = {
     library: '[name]_dll',
   },
   plugins: [
-    // 生成dll时，先清除output中的path路径下的文件，注：如果不配置CleanWebpackPlugin，则默认清除output
+    // 生成dll时，先清除output中的path路径下的文件，注：不配置CleanWebpackPlugin，则默认清除output
+    // 此处没有使用webpack5的output.clean清除output目录，是因为会将DllPlugin生成的manifest文件清除，未找到原因
     new CleanWebpackPlugin(),
     new Webpack.DllPlugin({
       // 请求的manifest的上下文，它与dllReferencePlugin中的context不同,
