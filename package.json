@@ -7,6 +7,8 @@
     "dev": "cross-env NODE_ENV=development ENV_TYPE=daily webpack-dev-server",
     "build": "cross-env NODE_ENV=production ENV_TYPE=daily webpack",
     "build:prod": "cross-env NODE_ENV=production ENV_TYPE=prod webpack",
+    "generateAnalyzFile": "webpack --profile --json > ./dist/stats.json",
+    "analyz": "npm run generateAnalyzFile && webpack-bundle-analyzer --port 8888 ./dist/stats.json",
     "dll": "webpack --config webpack.dll.config.js",
     "eslint": "eslint --ext .js,.ts,.tsx src",
     "eslint-fix": "eslint --fix --ext .js,.ts,.tsx src"
@@ -54,9 +56,11 @@
     "typescript": "^3.9.10",
     "url-loader": "^4.1.1",
     "webpack": "^5.51.1",
+    "webpack-bundle-analyzer": "^4.4.2",
     "webpack-cli": "^4.8.0",
     "webpack-dev-server": "^4.0.0",
-    "webpack-merge": "^5.8.0"
+    "webpack-merge": "^5.8.0",
+    "webpack-parallel-uglify-plugin": "^2.0.0"
   },
   "dependencies": {
     "@types/react": "^17.0.19",
