@@ -3,7 +3,7 @@
  * @Author: Hexon
  * @Date: 2021-09-07 19:30:07
  * @LastEditors: Hexon
- * @LastEditTime: 2021-09-07 20:27:17
+ * @LastEditTime: 2021-09-07 20:41:19
  */
 
 import React from 'react';
@@ -11,7 +11,6 @@ import { useSelector } from 'react-redux';
 import { Post, selectPost } from './postSlice';
 
 export default function PostsList(): React.ReactElement {
-  console.log('posts');
   const posts = useSelector(selectPost);
 
   const PostsList = posts.map((post: Post, index: number) => (

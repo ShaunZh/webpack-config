@@ -3,11 +3,10 @@
  * @Author: Hexon
  * @Date: 2021-09-07 19:30:23
  * @LastEditors: Hexon
- * @LastEditTime: 2021-09-07 20:33:06
+ * @LastEditTime: 2021-09-07 21:18:48
  */
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { nanoid } from '@reduxjs/toolkit';
 import { addPost } from './postSlice';
 
 export default function AddPostForm(): React.ReactElement {
@@ -22,11 +21,7 @@ export default function AddPostForm(): React.ReactElement {
 
   const handleSubmit = () => {
     if (title && content) {
-      dispatch(addPost({
-        id: nanoid(),
-        title,
-        content
-      }));
+      dispatch(addPost(title, content));
       setTitle('');
       setContent('');
     }
