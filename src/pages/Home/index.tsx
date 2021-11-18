@@ -3,14 +3,17 @@
  * @Author: Hexon
  * @Date: 2021-08-30 10:00:50
  * @LastEditors: Hexon
- * @LastEditTime: 2021-08-31 13:42:58
+ * @LastEditTime: 2021-11-18 23:24:17
  */
 import React from 'react';
+import { Button } from 'antd';
 
 
 export default function Home(): React.ReactElement {
   return (
-    <p>Home</p>
+    <p>
+      <Button>home</Button>
+    </p>
   );
 }
 
